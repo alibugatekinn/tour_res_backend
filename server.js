@@ -6,7 +6,7 @@ require('dotenv').config();
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://tour-reservation-cq36af2vj-alibugatekinns-projects.vercel.app/',
     credentials: true 
   }));
 const port = process.env.PORT || 3000;
