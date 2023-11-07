@@ -14,6 +14,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/users',UsersRoute);
 
+app.get('/', (req, res) => {
+    res.send('Merhaba Dünya!');
+  });
 
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{
