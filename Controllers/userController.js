@@ -28,7 +28,7 @@ const signupUser = async (req, res) => {
         });
 
 
-        res.status(200).json({ mesaj:"kayıt başarılı" });
+        res.status(200).json({ mesaj:"kayıt başarılı : " });
     } catch (error) {
         res.status(400).json({ hata: error.message });
         console.error('Kullanıcı kayıt hatası:', error);
@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 gün
         });
         console.log(token);
-        res.status(200).json({mesaj:"login başarılı"});
+        res.status(200).json({ mesaj:`login başarılı : ${token} ` });
     } catch (error) {
         res.status(400).json({ hata: error.message });
     }
