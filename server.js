@@ -7,10 +7,20 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const {userDb}= require('./dbConnections/userDb')
 // CORS ve Cookie Parser ayarları
-app.use(cors({
-  origin: "*",
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (['http://localhost:3000','https://tour-reservation-dzez2xug6-alibugatekinns-projects.vercel.app'].indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy violation'));
+    }
+  },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+
+
 
 app.use(express.json());
 app.use(cookieParser());
