@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const {userDb}= require('./dbConnections/userDb')
 // CORS ve Cookie Parser ayarları
 app.use(cors({
-  origin: ['https://tour-reservation-dzez2xug6-alibugatekinns-projects.vercel.app/', 'http://localhost:3000'],
+  origin: "*",
   credentials: true
 }));
 
