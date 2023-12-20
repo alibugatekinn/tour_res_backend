@@ -9,7 +9,7 @@ const {userDb}= require('./dbConnections/userDb')
 // CORS ve Cookie Parser ayarları
 const corsOptions = {
   origin: function (origin, callback) {
-    if (['http://localhost:3000','https://tour-reservation-890hj027v-alibugatekinns-projects.vercel.app/'].indexOf(origin) !== -1 || !origin) {
+    if (['http://localhost:3000','https://tour-reservation-890hj027v-alibugatekinns-projects.vercel.app'].indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
       callback(new Error('CORS policy violation'));
