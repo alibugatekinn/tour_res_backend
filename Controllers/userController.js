@@ -66,8 +66,16 @@ const loginUser = async (req, res) => {
 
 const logoutUser = (req, res) => {
     // JWT token'ını içeren HTTP-only çerezi sil.
-    res.clearCookie('token');
-    res.clearCookie('refreshToken')
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: isProduction,
+        
+    });
+    res.clearCookie('refreshToken', {
+        httpOnly: true,
+        secure: isProduction,
+       
+    });
     res.status(200).json({ mesaj: 'çıkış başarılı' });
 }
 
