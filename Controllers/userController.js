@@ -69,15 +69,11 @@ const logoutUser = (req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
         secure: true, // Eğer HTTPS kullanıyorsanız
-        path: '/', // Çerezler için kullanılan path
-        domain: 'seashell-app-8ha6z.ondigitalocean.app', // Eğer spesifik bir domain için ayarlandıysa
         sameSite: 'None', // Eğer sameSite ayarını kullanıyorsanız
     });
     res.clearCookie('refreshToken', {
         httpOnly: true,
         secure: true, // Eğer HTTPS kullanıyorsanız
-        path: '/', // Çerezler için kullanılan path
-        domain: 'seashell-app-8ha6z.ondigitalocean.app', // Eğer spesifik bir domain için ayarlandıysa
         sameSite: 'None', // Eğer sameSite ayarını kullanıyorsanız
     });
     res.status(200).json({ mesaj: 'çıkış başarılı' });
