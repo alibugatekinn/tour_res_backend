@@ -39,25 +39,29 @@ const signupUser = async (req, res) => {
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
-        
         const user = await userModel.login(email, password);  // Login fonksiyonuyla doğrulama.
         const token = createToken(user._id, user.role);
 
         res.cookie('token', token, {
             httpOnly: true,
-            maxAge: 3600000,
+            secure: true, // HTTPS üzerinden gönderim için
+            sameSite: 'None', // SameSite politikasını ayarlar
+            maxAge: 3600000, // 1 saat
         });
-        const refreshToken = createRefreshToken(user._id,user.role);
+        const refreshToken = createRefreshToken(user._id, user.role);
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
+            secure: true, // HTTPS üzerinden gönderim için
+            sameSite: 'None', // SameSite politikasını ayarlar
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 gün
         });
         console.log(token);
-        res.status(200).json({ mesaj:`login başarılı : ${token} ` });
+        res.status(200).json({ mesaj: `login başarılı : ${token} ` });
     } catch (error) {
         res.status(400).json({ hata: error.message });
     }
 }
+
 
 
 const logoutUser = (req, res) => {
