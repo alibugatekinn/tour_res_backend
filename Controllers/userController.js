@@ -65,19 +65,24 @@ const loginUser = async (req, res) => {
 
 
 const logoutUser = (req, res) => {
-    // JWT token'ını içeren HTTP-only çerezi sil.
+    // JWT token'ını ve refreshToken'ı içeren HTTP-only çerezleri sil.
     res.clearCookie('token', {
         httpOnly: true,
-        secure: true,
-        
+        secure: true, // Eğer HTTPS kullanıyorsanız
+        path: '/', // Çerezler için kullanılan path
+        domain: 'seashell-app-8ha6z.ondigitalocean.app', // Eğer spesifik bir domain için ayarlandıysa
+        sameSite: 'None', // Eğer sameSite ayarını kullanıyorsanız
     });
     res.clearCookie('refreshToken', {
         httpOnly: true,
-        secure: true,
-       
+        secure: true, // Eğer HTTPS kullanıyorsanız
+        path: '/', // Çerezler için kullanılan path
+        domain: 'seashell-app-8ha6z.ondigitalocean.app', // Eğer spesifik bir domain için ayarlandıysa
+        sameSite: 'None', // Eğer sameSite ayarını kullanıyorsanız
     });
     res.status(200).json({ mesaj: 'çıkış başarılı' });
 }
+
 
 
 module.exports = {
