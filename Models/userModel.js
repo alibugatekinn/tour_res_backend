@@ -4,6 +4,7 @@ const validator= require('validator');
 const { userDb } = require('../dbConnections/userDb');
 
 const userSchema = new mongoose.Schema({
+    
     email: {
         type: String,
         required: true,
@@ -18,6 +19,7 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'admin'],  // Önceden tanımlanmış roller. Daha fazla eklemek için bu listeye eklenebilir.
         default: 'user'  // Eğer bir rol belirtilmezse, varsayılan olarak 'user' atanacaktır.
     }
+    
 });
 
 userSchema.statics.signup= async function(email, password,role){
